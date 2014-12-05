@@ -12,21 +12,21 @@ module.exports = function(grunt) {
 				 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;*/\n',
 		app: {
 			root:     'app/',
-			js:           '<%= root %>/js/',
-			less:      '<%= root %>/less/',
-			views:  '<%= root %>/views/',
-			img:      '<%= root %>/img/',
-			lib:         '<%= root %>/lib/',
-			files:     '<%= root %>/files/'
+			js:           'app/js/',
+			less:      'app/less/',
+			views:  'app/views/',
+			img:      'app/img/',
+			lib:         'app/lib/',
+			files:     'app/files/'
 		},
 		prod: {
 			root:     'build/',
-			js:           '<%= root %>/js/',
-			css:        '<%= root %>/css/',
-			views:  '<%= root %>/views/',
-			img:      '<%= root %>/img/',
-			lib:         '<%= root %>/lib/',
-			files:     '<%= root %>/files/'
+			js:           'build/js/',
+			css:        'build/css/',
+			views:  'build/views/',
+			img:      'build/img/',
+			lib:         'build/lib/',
+			files:     'build/files/'
 		},
 		bower: 'bower_components/',
 		less: {
@@ -47,6 +47,18 @@ module.exports = function(grunt) {
 			}
 		},
 		copy: {
+			jsmodules: {
+				expand: true,
+				cwd: '<%= bower %>',
+				src: [
+					'angular/angular.min*',
+					'angular-route/angular-route.js',
+					'jquery/dist/*.min.js',
+					'angular-sanitize/*.js'
+				],
+				dest: '<%= prod.js %>',
+				flatten: true
+			},
 			less: {
 				expand: true,
 				cwd: '<%= bower %>',
@@ -60,18 +72,6 @@ module.exports = function(grunt) {
 				src: [
 					'angular-*/*.map',
 					'jquery/dist/*.map'
-				],
-				dest: '<%= prod.js %>',
-				flatten: true
-			},
-			jsmodules: {
-				expand: true,
-				cwd: '<%= bower %>',
-				src: [
-					'angular/angular.min*',
-					'angular-route/angular-route.js',
-					'jquery/dist/*.min.js',
-					'angular-sanitize/*.js'
 				],
 				dest: '<%= prod.js %>',
 				flatten: true
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 				cwd: '<%= app.views %>',
 				src: [ '**/*.html' ],
 				dest: '<%= prod.views %>',
-				flatten: true
+				flatten: false
 			},
 			img: {
 				expand: true,

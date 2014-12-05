@@ -1,4 +1,4 @@
-angular.module('gvhsApp', [ 'ngSanitize' ])
+angular.module('gvhsApp', [ 'ngRoute', 'ngSanitize' ])
 	.controller('MainController', function($scope, $http, $sce) {
-		$scope.posts = "Hellow, World!";
+		$scope.posts = "Hello, World!";
 	});
