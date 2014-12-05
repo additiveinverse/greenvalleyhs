@@ -1,7 +1,8 @@
 module.exports = function(grunt) {
 	var name    = '<%= pkg.name %>-v<%= pkg.version%>',
-  	manifest = { '<%= prod.css %>layout.min.css': [  '<%= app.less %>normalize.less', '<%= app.less %>grid.less' ],
-        	                  '<%= prod.css %>global.css': '<%= app.less %>global.less'
+  manifest = { '<%= prod.css %>layout.min.css': [  '<%= app.less %>normalize.less', 
+  							'<%= app.less %>grid.less' ], '<%= prod.css %>global.css': 
+  							'<%= app.less %>global.less'
 	};
 
 	grunt.initConfig({
